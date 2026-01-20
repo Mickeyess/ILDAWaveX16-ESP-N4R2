@@ -1,4 +1,14 @@
 #include "ILDA.h"
+#include <Arduino.h>
+#include <FS.h>
+
+// Add these lines at the top of the file, after the existing includes
+#ifndef htons
+#define htons(x) ( (((x)<<8)&0xFF00) | (((x)>>8)&0xFF) )
+#endif
+#ifndef ntohs
+#define ntohs(x) htons(x)
+#endif
 
 uint8_t ILDA::readHeader(File file) {
   if (!file) return 1;
