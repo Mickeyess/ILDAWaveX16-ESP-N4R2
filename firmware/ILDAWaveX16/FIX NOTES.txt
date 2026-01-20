@@ -1,0 +1,36 @@
+These fixes are to run ILDAwave16 on ESP-S3-Mini-1-N4R2
+
+Vscode v1.108.1
+PlatformIO IDE  v3.3.4
+ESP-IDF v1.11.0
+Python 3.10.12
+git version 2.34.1
+OS Ubuntu 22.04.5 LTS
+
+1. For the ILDA library, add the ntohs fix to lib/ILDA/ILDA.cpp:
+
+#include <Arduino.h>
+#include <FS.h>
+
+// Add these lines at the top of the file, after the existing includes
+#ifndef htons
+#define htons(x) ( (((x)<<8)&0xFF00) | (((x)>>8)&0xFF) )
+#endif
+#ifndef ntohs
+#define ntohs(x) htons(x)
+#endif
+
+2. Create a file named partitions.csv (or default_4MB.csv) in your project root with this content:
+
+# Name,   Type, SubType, Offset,  Size, Flags
+nvs,      data, nvs,     0x9000,  0x6000,
+phy_init, data, phy,     0xf000,  0x1000,
+factory,  app,  factory, 0x10000, 0x3f0000,
+
+3. Use edited platformio.ini
+
+
+
+
+
+
