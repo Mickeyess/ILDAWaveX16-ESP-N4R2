@@ -1,6 +1,8 @@
 # ILDAWaveX16 - Open Source Laser DAC
 [![](https://stanleyprojects.com/projects/ildawavex16/thumbs/cover-text.jpg)](https://stanleyprojects.com/projects/ildawavex16)
 
+This fork is to allow the project to build and flash to ESP-S3-Mini-1-N4R2 rather than the original N8 version.
+
 **ILDAWaveX16** is an open-source, high-resolution, wireless laser DAC with SD-card playback, network control, and ILDA output.
 
 Traditional laser DACs are often expensive, proprietary, or limited in flexibility, especially for those who want to experiment with laser systems, build custom projectors, or interface with low-cost driver kits.
